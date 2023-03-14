@@ -1,0 +1,3 @@
+/Users/tamele/IdeaProjects/DA-Project1/cmake-build-debug/CMakeFiles/DA_Project1.dir
+/Users/tamele/IdeaProjects/DA-Project1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/tamele/IdeaProjects/DA-Project1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
