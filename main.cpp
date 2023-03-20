@@ -1,6 +1,6 @@
 #include "src/Menu.h"
 
 int main() {
-    (new Menu)->appMenu();
+    (new Menu)->mainMenu();
     return 0;
 }

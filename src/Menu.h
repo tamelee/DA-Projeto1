@@ -1,5 +1,5 @@
-#ifndef DA_PROJECT1_MENU_H
-#define DA_PROJECT1_MENU_H
+#ifndef MENU_H
+#define MENU_H
 
 #include "iostream"
 
@@ -7,8 +7,12 @@ using namespace std;
 
 class Menu {
 public:
-    void appMenu();
+    void mainMenu();
+    void dataMenu();
+    void bsmMenu();
+    void ocoMenu();
+    void rasMenu();
 };
 
 
-#endif //DA_PROJECT1_MENU_H
+#endif //MENU_H
