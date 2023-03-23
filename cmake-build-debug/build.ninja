@@ -76,6 +76,18 @@ build CMakeFiles/DA_Project1.dir/src/File.cpp.o: CXX_COMPILER__DA_Project1_Debug
   OBJECT_DIR = CMakeFiles/DA_Project1.dir
   OBJECT_FILE_DIR = CMakeFiles/DA_Project1.dir/src
 
+build CMakeFiles/DA_Project1.dir/src/Network.cpp.o: CXX_COMPILER__DA_Project1_Debug /Users/tamele/IdeaProjects/DA-Project1/src/Network.cpp || cmake_object_order_depends_target_DA_Project1
+  DEP_FILE = CMakeFiles/DA_Project1.dir/src/Network.cpp.o.d
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17
+  OBJECT_DIR = CMakeFiles/DA_Project1.dir
+  OBJECT_FILE_DIR = CMakeFiles/DA_Project1.dir/src
+
+build CMakeFiles/DA_Project1.dir/src/NetworkController.cpp.o: CXX_COMPILER__DA_Project1_Debug /Users/tamele/IdeaProjects/DA-Project1/src/NetworkController.cpp || cmake_object_order_depends_target_DA_Project1
+  DEP_FILE = CMakeFiles/DA_Project1.dir/src/NetworkController.cpp.o.d
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17
+  OBJECT_DIR = CMakeFiles/DA_Project1.dir
+  OBJECT_FILE_DIR = CMakeFiles/DA_Project1.dir/src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target DA_Project1
@@ -84,7 +96,7 @@ build CMakeFiles/DA_Project1.dir/src/File.cpp.o: CXX_COMPILER__DA_Project1_Debug
 #############################################
 # Link the executable DA_Project1
 
-build DA_Project1: CXX_EXECUTABLE_LINKER__DA_Project1_Debug CMakeFiles/DA_Project1.dir/main.cpp.o CMakeFiles/DA_Project1.dir/src/Menu.cpp.o CMakeFiles/DA_Project1.dir/src/Station.cpp.o CMakeFiles/DA_Project1.dir/src/Segment.cpp.o CMakeFiles/DA_Project1.dir/src/File.cpp.o
+build DA_Project1: CXX_EXECUTABLE_LINKER__DA_Project1_Debug CMakeFiles/DA_Project1.dir/main.cpp.o CMakeFiles/DA_Project1.dir/src/Menu.cpp.o CMakeFiles/DA_Project1.dir/src/Station.cpp.o CMakeFiles/DA_Project1.dir/src/Segment.cpp.o CMakeFiles/DA_Project1.dir/src/File.cpp.o CMakeFiles/DA_Project1.dir/src/Network.cpp.o CMakeFiles/DA_Project1.dir/src/NetworkController.cpp.o
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk
   OBJECT_DIR = CMakeFiles/DA_Project1.dir
   POST_BUILD = :

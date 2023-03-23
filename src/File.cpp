@@ -9,8 +9,12 @@ vector<Station> File::readStations() {
     string header;
     string name, district, municipality, township, line;
 
-    ifstream file("");
-    getline(file, header, ',');
+    ifstream file("dataset/stations.csv");
+    if(!file.is_open()){
+        cout << "File 'stations' not opened" << endl;
+
+    }
+    getline(file, header);
 
     while(!file.eof()){
         getline(file, name, ',');
@@ -30,15 +34,18 @@ vector<Segment> File::readNetwork() {
     string stationA, stationB, cap, service;
     int capacity;
 
-    ifstream file("");
-    getline(file, header, ',');
+    ifstream file("dataset/network.csv");
+    if(!file.is_open()){
+        cout << "File 'network' not opened" << endl;
+    }
+    getline(file, header);
 
     while(!file.eof()){
         getline(file, stationA, ',');
         getline(file, stationB, ',');
         getline(file, cap, ',');
         stringstream s1(cap); s1 >> capacity;
-        getline(file, service, ',');
+        getline(file, service);
         network.emplace_back(stationA, stationB, capacity, service);
     }
     file.close();
