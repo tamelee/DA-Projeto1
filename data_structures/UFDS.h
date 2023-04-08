@@ -1,13 +1,6 @@
-/*
- * UFDS.h
- * A simple implementation of Union-Find Disjoint Set (UFDS), required by Kruskal's algorithm.
- *
- * Created on: 25/01/2022
- *      Author: Gonçalo Leão
- */
+#ifndef DA_PROJECT1_UFDS_H
+#define DA_PROJECT1_UFDS_H
 
-#ifndef DA_TP_CLASSES_UFDS
-#define DA_TP_CLASSES_UFDS
 
 #include <vector>
 
@@ -22,5 +15,4 @@ private:
     std::vector<unsigned int> rank; // Upper bound for the height of a tree whose root is node i.
 };
 
-
-#endif //DA_TP_CLASSES_UFDS
+#endif //DA_PROJECT1_UFDS_H

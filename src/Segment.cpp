@@ -14,10 +14,10 @@ Segment::Segment(string stationA, string stationB, int capacity, string service)
     this->service = service;
 }
 
-string Segment::getStationA() { return this->stationA; }
+string Segment::getStationA() const { return this->stationA; }
 
-string Segment::getStationB() { return this->stationB; }
+string Segment::getStationB() const { return this->stationB; }
 
 int Segment::getCapacity() const { return this->capacity; }
 
-string Segment::getService() { return this->service; }
+string Segment::getService() const { return this->service; }

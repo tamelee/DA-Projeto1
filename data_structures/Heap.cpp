@@ -1,6 +1,3 @@
-// By: Gonçalo Leão
-// Based on MutablePriorityQueue.h
-
 #include "Heap.h"
 
 // Index calculations
@@ -9,8 +6,8 @@
 
 Heap::Heap() {
     elems.push_back(0);
-	// indices will be used starting in 1
-	// to facilitate parent/child calculations
+    // indices will be used starting in 1
+    // to facilitate parent/child calculations
 }
 
 Heap::Heap(std::vector<int> v): Heap() {
@@ -28,43 +25,43 @@ Heap::Heap(std::vector<int> v): Heap() {
 }
 
 bool Heap::empty() {
-	return elems.size() == 1;
+    return elems.size() == 1;
 }
 
 int Heap::extractMin() {
-	auto x = elems[1];
+    auto x = elems[1];
     elems[1] = elems.back();
     elems.pop_back();
-	if(elems.size() > 1) heapifyDown(1);
-	return x;
+    if(elems.size() > 1) heapifyDown(1);
+    return x;
 }
 
 void Heap::insert(int x) {
-	elems.push_back(x);
-	heapifyUp(elems.size()-1);
+    elems.push_back(x);
+    heapifyUp(elems.size()-1);
 }
 
 void Heap::heapifyUp(unsigned int i) {
-	auto x = elems[i];
-	while (i > 1 && x < elems[parent(i)]) {
+    auto x = elems[i];
+    while (i > 1 && x < elems[parent(i)]) {
         elems[i] = elems[parent(i)];
-		i = parent(i);
-	}
+        i = parent(i);
+    }
     elems[i] = x;
 }
 
 void Heap::heapifyDown(unsigned int i) {
-	auto x = elems[i];
-	while (true) {
-		unsigned k = leftChild(i);
-		if (k >= elems.size())
-			break;
-		if (k+1 < elems.size() && elems[k+1] < elems[k])
-			++k; // right child of i
-		if ( ! (elems[k] < x) )
-			break;
+    auto x = elems[i];
+    while (true) {
+        unsigned k = leftChild(i);
+        if (k >= elems.size())
+            break;
+        if (k+1 < elems.size() && elems[k+1] < elems[k])
+            ++k; // right child of i
+        if ( ! (elems[k] < x) )
+            break;
         elems[i] = elems[k];
-		i = k;
-	}
+        i = k;
+    }
     elems[i] = x;
 }

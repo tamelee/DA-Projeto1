@@ -13,10 +13,10 @@ class Segment {
 public:
     Segment();
     Segment(string stationA, string stationB, int capacity, string service);
-    string getStationA();
-    string getStationB();
+    string getStationA() const;
+    string getStationB() const;
     int getCapacity() const;
-    string getService();
+    string getService() const;
 };
 
 

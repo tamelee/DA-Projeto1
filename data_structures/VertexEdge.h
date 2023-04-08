@@ -1,7 +1,6 @@
-// By: Gonçalo Leão
+#ifndef DA_PROJECT1_VERTEXEDGE_H
+#define DA_PROJECT1_VERTEXEDGE_H
 
-#ifndef DA_TP_CLASSES_VERTEX_EDGE
-#define DA_TP_CLASSES_VERTEX_EDGE
 
 #include <iostream>
 #include <vector>
@@ -19,9 +18,11 @@ class Edge;
 class Vertex {
 public:
     Vertex(int id);
+    Vertex(std::string name);
     bool operator<(Vertex & vertex) const; // // required by MutablePriorityQueue
 
     int getId() const;
+    std::string getName() const;
     std::vector<Edge *> getAdj() const;
     bool isVisited() const;
     bool isProcessing() const;
@@ -31,18 +32,21 @@ public:
     std::vector<Edge *> getIncoming() const;
 
     void setId(int info);
+    void setName(std::string name);
     void setVisited(bool visited);
     void setProcesssing(bool processing);
     void setIndegree(unsigned int indegree);
     void setDist(double dist);
     void setPath(Edge *path);
     Edge * addEdge(Vertex *dest, double w);
+    Edge * addEdge(Vertex *dest, double w, std::string serv);
     bool removeEdge(int destID);
     void removeOutgoingEdges();
 
     friend class MutablePriorityQueue<Vertex>;
 protected:
     int id;                // identifier
+    std::string name;
     std::vector<Edge *> adj;  // outgoing edges
 
     // auxiliary fields
@@ -64,9 +68,11 @@ protected:
 class Edge {
 public:
     Edge(Vertex *orig, Vertex *dest, double w);
+    Edge(Vertex *orig, Vertex *dest, double w, std::string& serv);
 
     Vertex * getDest() const;
     double getWeight() const;
+    std::string getService() const;
     bool isSelected() const;
     Vertex * getOrig() const;
     Edge *getReverse() const;
@@ -78,6 +84,7 @@ public:
 protected:
     Vertex * dest; // destination vertex
     double weight; // edge weight, can also be used for capacity
+    std::string service;
 
     // auxiliary fields
     bool selected = false;
@@ -89,4 +96,5 @@ protected:
     double flow; // for flow-related problems
 };
 
-#endif /* DA_TP_CLASSES_VERTEX_EDGE */
+
+#endif //A_PEOJECT1_VERTEXEDGE_H

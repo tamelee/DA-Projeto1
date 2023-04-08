@@ -2,6 +2,7 @@
 #define STATION_H
 
 #include "iostream"
+#include "vector"
 
 using namespace std;
 
@@ -21,5 +22,25 @@ public:
     string getLine();
 };
 
+
+class Municipality {
+    string name;
+    double flow;
+public:
+    Municipality(string name);
+    string getName();
+    double getFlow() const;
+    void setFlow(double flow);
+};
+
+class District {
+    string name;
+    double flow;
+public:
+    District(string name);
+    string getName();
+    double getFlow() const;
+    void setFlow(double flow);
+};
 
 #endif //STATION_H

@@ -1,10 +1,10 @@
-// By: Gonçalo Leão
-
 #include "VertexEdge.h"
 
 /************************* Vertex  **************************/
 
 Vertex::Vertex(int id): id(id) {}
+
+Vertex::Vertex(std::string name): name(name) {}
 
 /*
  * Auxiliary function to add an outgoing edge to a vertex (this),
@@ -12,6 +12,13 @@ Vertex::Vertex(int id): id(id) {}
  */
 Edge * Vertex::addEdge(Vertex *d, double w) {
     auto newEdge = new Edge(this, d, w);
+    adj.push_back(newEdge);
+    d->incoming.push_back(newEdge);
+    return newEdge;
+}
+
+Edge * Vertex::addEdge(Vertex *d, double w, std::string serv) {
+    auto newEdge = new Edge(this, d, w, serv);
     adj.push_back(newEdge);
     d->incoming.push_back(newEdge);
     return newEdge;
@@ -60,6 +67,10 @@ int Vertex::getId() const {
     return this->id;
 }
 
+std::string Vertex::getName() const {
+    return this->name;
+}
+
 std::vector<Edge*> Vertex::getAdj() const {
     return this->adj;
 }
@@ -90,6 +101,10 @@ std::vector<Edge *> Vertex::getIncoming() const {
 
 void Vertex::setId(int id) {
     this->id = id;
+}
+
+void Vertex::setName(std::string name) {
+    this->name = name;
 }
 
 void Vertex::setVisited(bool visited) {
@@ -131,12 +146,18 @@ void Vertex::deleteEdge(Edge *edge) {
 
 Edge::Edge(Vertex *orig, Vertex *dest, double w): orig(orig), dest(dest), weight(w) {}
 
+Edge::Edge(Vertex *orig, Vertex *dest, double w, std::string& serv): orig(orig), dest(dest), weight(w), service(serv) {}
+
 Vertex * Edge::getDest() const {
     return this->dest;
 }
 
 double Edge::getWeight() const {
     return this->weight;
+}
+
+std::string Edge::getService() const {
+    return this->service;
 }
 
 Vertex * Edge::getOrig() const {

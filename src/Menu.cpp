@@ -53,7 +53,7 @@ void Menu::dataMenu() {
                     cout << "DATA SET OPENED SUCCESSFULLY" << endl;
                 else
                     cout << "DATA SET CANNOT BE OPENED" << endl;
-                dataMenu();
+                mainMenu();
                 break;
             }
             case 2: viewStation(); break;
@@ -65,24 +65,28 @@ void Menu::dataMenu() {
 }
 
 void Menu::bsmMenu() {
-    cout << "******************************************" << endl;
-    cout << "*                                        *" << endl;
-    cout << "*     1) T2.1                            *" << endl;
-    cout << "*     2) T2.2                            *" << endl;
-    cout << "*     3) T2.3                            *" << endl;
-    cout << "*     4) T2.4                            *" << endl;
-    cout << "*                                        *" << endl;
-    cout << "*                               0) BACK  *" << endl;
-    cout << "******************************************" << endl;
+    cout << "******************************************************************" << endl;
+    cout << "*                                                                *" << endl;
+    cout << "*     1) VISUALIZE THE MAXIMUM NUMBER OF TRAINS THAT CAN         *" << endl;
+    cout << "*        SIMULTANEOUSLY TRAVEL BETWEEN TWO SPECIFIC STATIONS     *" << endl;
+    cout << "*     2) VISUALIZE WHICH PAIR OF STATIONS REQUIRE THE MOST       *" << endl;
+    cout << "*        AMOUNT OF TRAINS                                        *" << endl;
+    cout << "*     3) REPORT OF THE TOP-K MUNICIPALITIES AND DISTRICTS        *" << endl;
+    cout << "*        TO ASSIGN LARGER BUDGETS                                *" << endl;
+    cout << "*     4) REPORT OF THE MAXIMUM NUMBER OF TRAINS THAT CAN         *" << endl;
+    cout << "*        SIMULTANEOUSLY ARRIVE AT A GIVEN STATION                *" << endl;
+    cout << "*                                                                *" << endl;
+    cout << "*                                                       0) BACK  *" << endl;
+    cout << "******************************************************************" << endl;
     cout << "Option: ";
     int option;
     do{
         cin >> option;
         switch(option) {
-            case 1: break;
-            case 2: break;
-            case 3: break;
-            case 4: break;
+            case 1: viewMaxTrainsBetweenStations(); break;
+            case 2: viewPairWithMostTrains(); break;
+            case 3: viewTopkMunicipalities(); break;
+            case 4: viewMaxTrainsArriveStation(); break;
             case 0: mainMenu(); break;
             default: cout << "Invalid option, please try again: ";
         }
@@ -132,7 +136,7 @@ void Menu::rasMenu() {
 }
 
 void Menu::viewStation() {
-    cout << "Station's Name: ";
+    cout << "Station's name: ";
     string name;
     getline(cin >> ws, name);
     Station stat = controller.findStation(name);
@@ -159,9 +163,9 @@ void Menu::viewStation() {
 }
 
 void Menu::viewSegment() {
-    cout << "Station A: ";
+    cout << "Departure station: ";
     string stationA; getline(cin >> ws, stationA);
-    cout << "Station B: ";
+    cout << "Arrival station: ";
     string stationB; getline(cin >> ws, stationB);
     Segment seg = controller.findSegment(stationA, stationB);
     cout << "*******************************************************************" << endl;
@@ -183,4 +187,46 @@ void Menu::viewSegment() {
         else
             cout << "Invalid option, please try again: ";
     } while(option != 0);
+}
+
+void Menu::viewMaxTrainsBetweenStations() {
+    cout << "Departure station: ";
+    string source; getline(cin >> ws, source);
+    cout << "Arrival station: ";
+    string dest; getline(cin >> ws, dest);
+    double maxFlow = controller.maxTrainsBetweenStations(source, dest);
+    if (maxFlow == -1) {
+        cout << "********************************************" << endl;
+        cout << "  INVALID DEPARTURE AND/OR ARRIVAL STATION  " << endl;
+        cout << "  1) TRY AGAIN                     0) BACK  " << endl;
+        cout << "********************************************" << endl;
+        cout << "Option: ";
+        int option;
+        do {
+            cin >> option;
+            switch(option) {
+                case 1: viewMaxTrainsBetweenStations(); break;
+                case 0: bsmMenu(); break;
+                default: cout << "Invalid option, please try again: ";
+            }
+        }while(option != 1 && option != 0);
+    }
+    cout << "MAX FLOW = " << maxFlow << endl;
+}
+
+void Menu::viewPairWithMostTrains() {
+    cout << "loading..." << endl;
+    vector<string> pair = controller.pairWithMostTrains();
+    cout << "PAIR: " << pair.front() << " - "<< pair.back() << endl;
+}
+
+void Menu::viewTopkMunicipalities() {
+    cout << "loading..." << endl;
+    vector<Municipality> munis = controller.topkMunicipalities();
+    for(auto& m: munis)
+        cout << m.getName() << " - " << m.getFlow() << endl;
+}
+
+void Menu::viewMaxTrainsArriveStation(){
+
 }

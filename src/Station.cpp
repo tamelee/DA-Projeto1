@@ -35,3 +35,21 @@ string Station::getTownship() {
 string Station::getLine() {
     return this->line;
 }
+
+//****** Municipality *******//
+Municipality::Municipality(string name) {this->name = std::move(name); flow = 0;}
+
+string Municipality::getName() { return this->name; }
+
+double Municipality::getFlow() const { return this->flow; }
+
+void Municipality::setFlow(double flow) { this->flow = flow;}
+
+//****** District *******//
+District::District(string name) {this->name = std::move(name); flow = 0;}
+
+string District::getName() { return this->name; }
+
+double District::getFlow() const { return this->flow; }
+
+void District::setFlow(double flow) { this->flow = flow;}
