@@ -1,5 +1,4 @@
-#ifndef STATION_H
-#define STATION_H
+#pragma once
 
 #include "iostream"
 #include "vector"
@@ -42,5 +41,3 @@ public:
     double getFlow() const;
     void setFlow(double flow);
 };
-
-#endif //STATION_H

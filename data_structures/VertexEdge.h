@@ -41,6 +41,7 @@ public:
     Edge * addEdge(Vertex *dest, double w);
     Edge * addEdge(Vertex *dest, double w, std::string serv);
     bool removeEdge(int destID);
+    bool removeEdge(const std::string& destName);
     void removeOutgoingEdges();
 
     friend class MutablePriorityQueue<Vertex>;

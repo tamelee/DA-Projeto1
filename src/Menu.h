@@ -1,5 +1,4 @@
-#ifndef MENU_H
-#define MENU_H
+#pragma once
 
 #include "iostream"
 #include "NetworkController.h"
@@ -15,13 +14,20 @@ protected:
     void bsmMenu();
     void ocoMenu();
     void rasMenu();
+    void reliAndSensiMenu();
+    void removeSegment();
     void viewStation();
     void viewSegment();
     void viewMaxTrainsBetweenStations();
     void viewPairWithMostTrains();
+    void municipalitiesOrDistricts();
     void viewTopkMunicipalities();
+    void viewTopkDistricts();
     void viewMaxTrainsArriveStation();
+    void viewMaxTrainsBetweenStationsMinCost();
+    void viewTopkAffectedStations();
+    void viewMaxTrainsBetweenStationsReduced();
+    static int askTopk();
+    void goBackMenu();
 };
 
-
-#endif //MENU_H

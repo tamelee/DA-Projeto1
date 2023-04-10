@@ -1,5 +1,4 @@
-#ifndef SEGMENT_H
-#define SEGMENT_H
+#pragma once
 
 #include "iostream"
 
@@ -19,5 +18,3 @@ public:
     string getService() const;
 };
 
-
-#endif //SEGMENT_H

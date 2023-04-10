@@ -47,6 +47,24 @@ bool Vertex::removeEdge(int destID) {
     return removedEdge;
 }
 
+bool Vertex::removeEdge(const std::string& destName) {
+    bool removedEdge = false;
+    auto it = adj.begin();
+    while (it != adj.end()) {
+        Edge *edge = *it;
+        Vertex *dest = edge->getDest();
+        if (dest->getName() == destName) {
+            it = adj.erase(it);
+            deleteEdge(edge);
+            removedEdge = true;
+        }
+        else {
+            it++;
+        }
+    }
+    return removedEdge;
+}
+
 /*
  * Auxiliary function to remove an outgoing edge of a vertex.
  */

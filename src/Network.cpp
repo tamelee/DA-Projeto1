@@ -1,5 +1,10 @@
 #include "Network.h"
 
+/**
+ * Creates the railway network graph.
+ * @param stations vector with all stations read from the file;
+ * @param segments vector with all segments read from the file;
+ */
 void Network::createNetwork(vector<Station> stations, const vector<Segment>& segments){
     for(auto& station: stations){
         addVertex(station.getName());
@@ -9,6 +14,12 @@ void Network::createNetwork(vector<Station> stations, const vector<Segment>& seg
     }
 }
 
+/**
+ * Finds the maximum flow in a flow network using the Edmonds-Karp Algorithm. Time complexity: O(V * E^2).
+ * @param source source node;
+ * @param dest destination node;
+ * @return the maximum flow between the nodes;
+ */
 double Network::maximum_flow(const string &source, const string &dest) {
     double max_flow = 0;
 
@@ -17,19 +28,39 @@ double Network::maximum_flow(const string &source, const string &dest) {
     if (s == nullptr || t == nullptr || s == t)
         return -1;
 
-    // Reset the flows
+
     for (auto v : vertexSet) {
         for (auto e: v->getAdj()) {
             e->setFlow(0);
         }
     }
-    // Loop to find augmentation paths
+
     while( findAugmentingPath(s, t) ) {
         double f = findMinResidualAlongPath(s, t);
         augmentFlowAlongPath(s, t, f);
         max_flow += f;
     }
     return max_flow;
+}
+
+/**
+ * Edmonds-Karp Algorithm to compute the maximum flow in a flow network. Time complexity: O(V * E^2).
+ * @param source source node;
+ * @param dest destination node;
+ */
+void Network::edmondsKarp(const string &source, const string &dest) {
+    Vertex* s = findVertex(source);
+    Vertex* t = findVertex(dest);
+
+    for (auto v : vertexSet) {
+        for (auto e: v->getAdj()) {
+            e->setFlow(0);
+        }
+    }
+    while( findAugmentingPath(s, t) ) {
+        double f = findMinResidualAlongPath(s, t);
+        augmentFlowAlongPath(s, t, f);
+    }
 }
 
 bool Network::findAugmentingPath(Vertex *s, Vertex *t) {

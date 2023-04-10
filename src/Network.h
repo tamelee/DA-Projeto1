@@ -1,5 +1,4 @@
-#ifndef GRAPH_H
-#define GRAPH_H
+#pragma once
 
 #include "iostream"
 #include "../data_structures/Graph.h"
@@ -17,7 +16,6 @@ protected:
 public:
     void createNetwork(vector<Station> stations, const vector<Segment>& segments);
     double maximum_flow(const string& source, const string& dest);
+    void edmondsKarp(const string& source, const string& dest);
 };
 
-
-#endif //GRAPH_H

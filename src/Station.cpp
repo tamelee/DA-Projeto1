@@ -43,7 +43,7 @@ string Municipality::getName() { return this->name; }
 
 double Municipality::getFlow() const { return this->flow; }
 
-void Municipality::setFlow(double flow) { this->flow = flow;}
+void Municipality::setFlow(double nflow) { this->flow = nflow;}
 
 //****** District *******//
 District::District(string name) {this->name = std::move(name); flow = 0;}
@@ -52,4 +52,4 @@ string District::getName() { return this->name; }
 
 double District::getFlow() const { return this->flow; }
 
-void District::setFlow(double flow) { this->flow = flow;}
+void District::setFlow(double nflow) { this->flow = nflow;}
